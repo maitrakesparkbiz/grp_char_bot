@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+</head>
+
+<body>
+  <form action="include/register.php" onsubmit="return verified()" method="post" enctype="multipart/form-data">
+    <table border="1px" style="margin-left: auto;margin-right: auto;" >
+      <tr>
+        <td>
+          <p>Enter Username</p>
+        </td>
+        <td>
+          <input type="text" name="username" id="username" />
+          <div id="validate_username" style="color: red">
+            Username only consist of alpabates
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Enter Password</p>
+        </td>
+        <td>
+          <input type="password" name="psw" id="psw" />
+          <div id="validate_psw" style="color: red">
+            password>8 characters,1 lowercase,1 uppercase,1 numeric digit,1
+            special character
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Enter confirm Password</p>
+        </td>
+        <td>
+          <input type="password" name="psw_cnf" id="psw_cnf" />
+
+          <div id="validate_psw_cnf" style="color: red">
+            password>8 characters,1 lowercase,1 uppercase,1 numeric digit,1
+            special character
+          </div>
+        </td>
+      </tr>
+      <tr></tr>
+<!--       <tr>
+        <td>
+          <p>Upload Profile photo</p>
+        </td>
+        <td>
+          <input type="file" name="filenname" id="filenname" accept="image/png, image/gif, image/jpeg" />
+        </td>
+      </tr> -->
+      <tr>
+        <td>
+          <input type="submit" value="Register" name="submit" />
+        </td>
+        <td>
+          <button type="button" onclick="window.location.href='admin_login.html'">login</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div style="margin-top: 28%;margin-left: 45%;">
+    <button type="button" onclick=deleteChat() style="background-color: red;" >Delete All Chat</button>
+  </div>
+</body>
+<script src="/chat/script/register.js"></script>
+
+</html>
