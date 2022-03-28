@@ -109,16 +109,23 @@ margin-top: 12%;
 </style>
 </head>
 
-<body onload="getdata()">
+<body onload="getdata();online();" >
 <div class="header">
 <div style="text-align: center;">
     <h4 id="username_display"><?php echo $username ?></h4>
     <button onclick="logout();">logout</button>
     <button onclick="update();">Update</button>
     <button onclick="del();">Del</button>
+    <button onclick="user_online();">Online Users</button>
     
   </div>
+<div id="show_online_users">
+  <table id="status" style="background-color: #aaa;">
 
+
+  </table>
+
+</div>
 
   <div id="update" style="display: none;" style="text-align: center;">
  
@@ -182,7 +189,7 @@ margin-top: 12%;
 
 <div class="content">
 
-<div id="show">
+<div id="show" style="color:#bfbfbf">
 
 
 </div>
@@ -197,7 +204,7 @@ margin-top: 12%;
 </body>
 <script src='/chat/script/logout.js'>
 
-
+alert("hello");
 </script>
 
 </html>

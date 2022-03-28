@@ -18,6 +18,19 @@ else
   document.getElementById('update').style.display="block";
 }
 }
+
+function user_online() {
+  
+  if(document.getElementById('show_online_users').style.display=="block"){
+    document.getElementById('show_online_users').style.display="none"; 
+  }
+  else
+  {
+    document.getElementById('show_online_users').style.display="block";
+  }
+  }
+
+
 function verified() {
 
 document.getElementById('validate_username').style.display="none"  
@@ -165,7 +178,7 @@ setInterval(() => {
     if(display!=data)
     {
      let len =myArray.length;
-    console.log(myArray[1]);    
+     
     noti(myArray[0],myArray[1]) 
     }
     
@@ -176,7 +189,7 @@ setInterval(() => {
           document.getElementById('show').innerHTML+='<div><span>'+myArray[i+1]+'</span></div>';          
     }
   })
-}, 500  );
+}, 500 );
 
 }
 
@@ -211,3 +224,56 @@ function noti(str1,str2) {
   }
 }
 
+function online() {
+  var str="";
+    fetch('include/online.php')
+    .then(response => response.text())
+    .then(data => {
+        const myArray = data.split("~~");
+        var today = new Date();
+        var date = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,"0")+'-'+today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes();
+        var dateTime = date+' '+time;
+        console.log(dateTime);
+        
+
+
+        for (let i = 0; i < myArray.length-1; i+=2) { 
+          if (dateTime==myArray[i+1].slice(0,16)) 
+          {
+            document.getElementById('status').innerHTML+='<tr><td style="color: green;">'+myArray[i]+''
+          }
+          else
+          {
+            document.getElementById('status').innerHTML+='<tr><td style="color: yellow;">'+myArray[i]+''
+          }
+        }  
+
+    })
+
+    setInterval(() => {
+      var today = new Date();
+      var date = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,"0")+'-'+today.getDate();
+      var time = today.getHours() + ":" + today.getMinutes();
+      var dateTime = date+' '+time;
+      console.log(dateTime);
+      fetch('include/online.php')
+      .then(response => response.text())
+      .then(data => {
+          const myArray = data.split("~~");
+          document.getElementById('status').innerHTML="";
+          for (let i = 0; i < myArray.length-1; i+=2) {
+            if (dateTime==myArray[i+1].slice(0,16)) 
+            {
+              document.getElementById('status').innerHTML+='<tr><td style="color: green;">'+myArray[i]+''
+            }
+            else
+            {
+              document.getElementById('status').innerHTML+='<tr><td style="color: yellow;">'+myArray[i]+''
+            }
+
+          }  
+
+      })
+    }, 1000);
+}
